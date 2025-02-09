@@ -16,6 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings # static settings
+from django.conf.urls.static import static # static settings
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView # jwt
 
 urlpatterns = [
@@ -23,3 +25,7 @@ urlpatterns = [
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'), # jwt
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'), # jwt
 ]
+
+
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) # static settings
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) # static settings
