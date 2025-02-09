@@ -28,18 +28,33 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5500",
+    "http://127.0.0.1:5500",
+]
+
+
 # Application definition
 
 INSTALLED_APPS = [
+    'corsheaders', # istalled
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+
 ]
 
+# CorsMiddleware sollte so hoch wie möglich platziert werden, vor allem vor jedem Middleware,
+# die Antworten wie Djangos CommonMiddleware oder Whitenoise's WhiteNoiseMiddleware.
+# Wenn es nicht vorher ist, wird es nicht in der Lage sein die CORS-Header zu diesen Antworten hinzuzufügen.
+
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.Common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
