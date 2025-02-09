@@ -6,11 +6,16 @@ from .serializers import ProductsSerializer, BrandsSerializer
 
 
 
-class ProductsApi(generics.ListCreateAPIView):
+class ProductsApi(generics.ListAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductsSerializer
 
 
-class BrandstApi(generics.ListCreateAPIView):
-    queryset = Product.objects.all()
+class BrandsApi(generics.ListAPIView):
+    queryset = Brand.objects.all()
     serializer_class = BrandsSerializer
+
+
+
+
+# zu verbesser, möglich create update und delete als detail
