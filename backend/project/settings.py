@@ -61,6 +61,7 @@ INSTALLED_APPS = [
 
     # created 
     'products',
+    'accounts',
 
 ]
 
