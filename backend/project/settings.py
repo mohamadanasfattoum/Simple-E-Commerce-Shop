@@ -25,14 +25,17 @@ SECRET_KEY = 'django-insecure-pyac(x9#t=a0n@jn*)79o=t*&=afm(zlxq$eb(3i%hhc0&hcp%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "localhost",
+    "127.0.0.1",
+]
 
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5500",
     "http://127.0.0.1:5500",
 ]
-
+CORS_ALLOW_CREDENTIALS = True
 
 # jwt
 REST_FRAMEWORK = {
