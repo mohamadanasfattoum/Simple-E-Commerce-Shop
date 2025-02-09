@@ -9,9 +9,14 @@ fetch("http://127.0.0.1:8000/api/products/", {
     .then((response) => response.json())
     .then((data) => {
         let tbodyGroup = document.getElementById("tb-group");
-        // let productsCounnt = document.getElementById("products-counnt");
-        // productsCounnt.innerHTML = products.count
-            
+        let productsCounnt = document.getElementById("products-counnt");
+        productsCounnt.innerHTML = data.length;
+
+        const brandsSet = new Set(data.map(product => product.brand));
+        let brandsCounnt = document.getElementById("brands-count");
+        brandsCounnt.innerHTML = brandsSet.size;
+
+
         data.forEach((product) => {
 
             let row = document.createElement("tr");
