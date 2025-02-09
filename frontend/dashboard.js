@@ -8,20 +8,32 @@ fetch("http://127.0.0.1:8000/api/products/", {
   })
     .then((response) => response.json())
     .then((data) => {
-  
-      data.forEach((product) => {
+        let tbodyGroup = document.getElementById("tb-group");
+        // let productsCounnt = document.getElementById("products-counnt");
+        // productsCounnt.innerHTML = products.count
+            
+        data.forEach((product) => {
 
-        let row = document.getElementById("tr-group");
-  
-        let productName = document.getElementById("product");
-        productName.innerHTML = product.name; 
-  
-        let productPrice = document.getElementById("price");
-        productPrice.innerHTML = product.price; 
+            let row = document.createElement("tr");
+    
+            let productName = document.createElement("td");
+            productName.setAttribute('class','product');
+            productName.innerHTML = product.name; 
+            row.appendChild(productName);
 
-  
-        let productCount = document.getElementById("count");
-        productCount.innerHTML = product.quantity; 
+            
+    
+            let productPrice = document.createElement("td");
+            productPrice.setAttribute('class','price');
+            productPrice.innerHTML = `${product.price}` 
+            row.appendChild(productPrice);
+    
+            let productCount = document.createElement("td");
+            productCount.setAttribute('class','count');          
+            productCount.innerHTML = product.quantity; 
+            row.appendChild(productCount);
+
+            tbodyGroup.appendChild(row);
 
       });
     })
