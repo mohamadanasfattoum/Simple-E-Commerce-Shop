@@ -42,7 +42,7 @@ fetch("http://127.0.0.1:8000/api/products/", {
     
             let productPrice = document.createElement("td");
             productPrice.setAttribute('class','price');
-            productPrice.innerHTML = `${product.price}` 
+            productPrice.innerHTML = `$ ${product.price}` 
             row.appendChild(productPrice);
     
             let productCount = document.createElement("td");
