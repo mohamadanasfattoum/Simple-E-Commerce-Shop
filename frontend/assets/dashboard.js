@@ -1,16 +1,24 @@
 
+let accessToken = localStorage.getItem('access');
+
+if(!accessToken || undefined){
+  window.location.herf = 'http://127.0.0.1:5500/frontend/login.html/'
+}
+
 fetch("http://127.0.0.1:8000/api/products/", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
     },
     credentials : "include"
   })
-    .then((response) => response.json())
+    .then(response => {return response.json()})
     .then((data) => {
 
       
         let tbodyGroup = document.getElementById("tb-group");
+        
         let productsCounnt = document.getElementById("products-counnt");
         productsCounnt.innerHTML = data.length;
 
@@ -43,4 +51,15 @@ fetch("http://127.0.0.1:8000/api/products/", {
             tbodyGroup.appendChild(row);
 
       });
-    })
+    }).catch(error => console.log(error));
+    
+
+
+
+
+function logOut(){
+  localStorage.clear();
+  window.location.href = 'http://127.0.0.1:5500/frontend/login.html';
+}
+
+

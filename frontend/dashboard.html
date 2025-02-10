@@ -59,11 +59,12 @@
                     <p>Settings</p>
                 </a>
             </li>
-            <li class="log-out">
-                <a href="#">
-                    <i class="fas fa-sign-out"></i>
-                    <p>Log Out</p>
+            <li class="log-out" onclick="logOut();" >
+                <a href="javascript:void(0);">    <!-- Verhindert das standardmäßige Verhalten des Links -->                
+                    <i class="fas fa-sign-out" ></i>
+                    <p>Log Out</p>                                        
                 </a>
+
             </li>
 
         </ul>
@@ -102,7 +103,7 @@
                 <div class="data">
                     <p>products</p>
                     <span id="products-counnt">
-                    0
+                        0
                     </span>
                 </div>
             </div>
