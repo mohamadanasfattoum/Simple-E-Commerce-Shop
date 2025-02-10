@@ -1,0 +1,44 @@
+body{
+    background-color: #003;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: sans-serif;
+}
+
+
+form{
+    background-color: #0000889f;
+    padding: 10px;
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap; /* sodass die ellmente nicht aus dem form rusgehen bei änderung der Grosse */
+    gap: 5px;
+}
+
+
+form input{
+    background-color: #0000aaa0;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 5px 10px;
+    flex-basis: 200px;
+    flex-grow: 1;
+    font-size: 1rem;
+    border-radius: 8px;
+
+
+}
+
+form button{
+    background-color: #14a;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    flex-basis: 30px;
+    flex-grow: 1;
+    font-size: 1rem;
+    border-radius: 8px;
+}
