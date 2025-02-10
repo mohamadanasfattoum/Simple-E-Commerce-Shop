@@ -1,8 +1,3 @@
-# Simple-E-Commerce-Shop
-Simple-E-Commerce-Shop
-
-
-
 # Simple E-Commerce Shop
 
 Ein einfaches E-Commerce-Shop-Projekt, das mit Django als Backend und HTML, CSS sowie JavaScript für das Frontend entwickelt wurde. Dieses Projekt zeigt, wie man eine Dashboard-Oberfläche erstellt, die mit einer Django-API kommuniziert.
