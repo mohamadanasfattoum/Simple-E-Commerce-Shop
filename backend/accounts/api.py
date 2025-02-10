@@ -9,4 +9,4 @@ from .serializer import UserAccountSerializer
 class UserAccountApi(generics.ListAPIView):
     queryset= UserAccount.objects.all()
     serializer_class = UserAccountSerializer
-    pagination_class = [permissions.IsAuthenticated]
+    permission_class = [permissions.IsAuthenticated]

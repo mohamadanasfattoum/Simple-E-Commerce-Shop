@@ -4,6 +4,6 @@ from .api import UserAccountApi
 
 
 urlpatterns = [
-    path("user/", UserAccountApi.as_view(), name="user_ccount"),
+    path("users/", UserAccountApi.as_view(), name="user_ccount"),
 
 ]

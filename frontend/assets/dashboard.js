@@ -26,6 +26,8 @@ fetch("http://127.0.0.1:8000/api/products/", {
         let brandsCounnt = document.getElementById("brands-count");
         brandsCounnt.innerHTML = brandsSet.size;
 
+        
+
 
         data.forEach((product) => {
 
@@ -54,6 +56,31 @@ fetch("http://127.0.0.1:8000/api/products/", {
     }).catch(error => console.log(error));
     
 
+
+
+    fetch("http://127.0.0.1:8000/accountsapi/users/", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`,
+      },
+      credentials : "include"
+    })
+      .then(response => {return response.json()})
+      .then((data) => {
+
+
+                
+        let usersCount  = document.getElementById("users-count");
+        usersCount.innerHTML = data.length;
+
+
+
+      }).catch(error => console.log(error));
+          
+        // const usersCount =  data.reduce((total, useraccount) => total + useraccount.users_count, 0)
+        // let usersCounnt = document.getElementById("users-counnt");
+        // usersCounnt.innerHTML = usersCount;
 
 
 
