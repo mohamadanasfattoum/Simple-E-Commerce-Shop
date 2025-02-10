@@ -6,4 +6,4 @@ from .models import UserAccount
 class UserAccountSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserAccount
-        fields = ('__all__')
+        fields = ['__all__']
