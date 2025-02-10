@@ -15,7 +15,10 @@ form{
     display: flex;
     flex-wrap: wrap; /* sodass die ellmente nicht aus dem form rusgehen bei änderung der Grosse */
     gap: 5px;
+    border-radius: 8px;
+
 }
+
 
 
 form input{
