@@ -1,0 +1,96 @@
+*{
+    margin: 0;
+    padding: 0;
+
+}
+
+.products-body{
+    background: linear-gradient(#01012e, #240019);
+    height: 100vh;
+    font-family: sans-serif;
+}
+
+.products-section{
+    background: url(./images/stars1.png);
+    height: 100vh;
+    display: flex;
+    justify-content: center; /*  x */
+    align-items: center; /*  y */
+    width: 100%;
+
+
+}
+
+.products-ul{
+
+    text-align: center;
+}
+
+.products-ul li{
+    list-style: none;
+    margin: 14px 0;
+
+}
+
+.products-ul li a{
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    background: darkblue;
+    padding: 6px 15px;
+    border-radius: 20px;
+    display: inline-block; /* inline block um a mit hover funktioniert weil a inline ist dehalb macht man block */
+    width: 150px;
+    transition: 0.5s;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 10;
+
+}
+.products-ul:hover li a{
+    opacity: 0;
+}
+
+.products-ul li a:hover{
+    transform: scale(1.5);
+    background-color: #ffffff55;
+    opacity: 1;
+}
+
+
+
+.products-ul li::after{
+    content: attr(data-text);
+    color: white;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 80px;
+    font-weight: 900;
+    text-transform: uppercase;
+    opacity: 0;
+    letter-spacing: 50px;
+    pointer-events: none;
+    transition: 0.5s;
+
+
+
+}
+
+.products-ul li:hover:after{
+    opacity: 0.5;
+    letter-spacing: 5px;
+
+}
+
+
+/* .products-ul li::before{
+    content: '';
+
+
+
+
+} */

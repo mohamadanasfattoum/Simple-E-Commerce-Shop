@@ -5,6 +5,26 @@ if(!accessToken || undefined){
   window.location.herf = 'http://127.0.0.1:5500/frontend/login.html/'
 }
 
+
+// products link
+
+document.getElementById('products-link').addEventListener('click', 
+  function(event){
+    event.preventDefault(); // Verhindert den Standard-Link-Klick
+    window.location.href = 'http://127.0.0.1:5500/frontend/products.html';
+});
+
+// dashboard link
+
+document.getElementById('dashboard-link').addEventListener('click', 
+  function(event){
+    event.preventDefault(); // Verhindert den Standard-Link-Klick
+    window.location.href = 'http://127.0.0.1:5500/frontend/dashboard.html';
+});
+
+////########################################
+
+
 fetch("http://127.0.0.1:8000/api/products/", {
     method: "GET",
     headers: {
@@ -18,7 +38,7 @@ fetch("http://127.0.0.1:8000/api/products/", {
 
       
         let tbodyGroup = document.getElementById("tb-group");
-        
+
         let productsCounnt = document.getElementById("products-counnt");
         productsCounnt.innerHTML = data.length;
 
@@ -26,20 +46,27 @@ fetch("http://127.0.0.1:8000/api/products/", {
         let brandsCounnt = document.getElementById("brands-count");
         brandsCounnt.innerHTML = brandsSet.size;
 
-        
+        // produts
+        let sectionGroup  = document.getElementById("section-group");
+        sectionGroup.setAttribute('class','products-section')
+
+
+        let ulRow = document.createElement("ul"); // produts
+        ulRow.setAttribute('class','products-ul')
+        sectionGroup.appendChild(ulRow)        
 
 
         data.forEach((product) => {
 
             let row = document.createElement("tr");
-    
+
+
             let productName = document.createElement("td");
             productName.setAttribute('class','product');
             productName.innerHTML = product.name; 
             row.appendChild(productName);
 
-            
-    
+                
             let productPrice = document.createElement("td");
             productPrice.setAttribute('class','price');
             productPrice.innerHTML = `$ ${product.price}` 
@@ -51,6 +78,25 @@ fetch("http://127.0.0.1:8000/api/products/", {
             row.appendChild(productCount);
 
             tbodyGroup.appendChild(row);
+
+            // produts ###############
+            let productNameLi = document.createElement("li");
+            let productNameA = document.createElement("a");
+            productNameA.innerHTML = product.name; 
+            productNameA.href = "#";
+
+            productNameLi.appendChild(productNameA);
+            ulRow.appendChild(productNameLi);
+
+            sectionGroup.appendChild(ulRow);
+
+
+            // produts ###############
+            
+
+            
+
+
 
       });
     }).catch(error => console.log(error));

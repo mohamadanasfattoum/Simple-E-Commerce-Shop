@@ -6,7 +6,8 @@
 }
 
 body{
-    background-color: #001;
+    background: linear-gradient(#01012e, #240019);
+    
     display: flex;
 }
 
@@ -95,6 +96,8 @@ ul li a i{
 /* ######################### */
 
 .content{
+    background: url(./images/stars1.png);
+    height: 100vh;
     width: 100%;
     margin: 10px;
     margin: .5rem;
