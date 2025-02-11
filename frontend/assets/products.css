@@ -29,6 +29,7 @@
 .products-ul li{
     list-style: none;
     margin: 14px 0;
+    position: relative;
 
 }
 
@@ -62,21 +63,19 @@
 
 
 .products-ul li::after{
-    content: attr(data-text);
+    content: attr(data-brand);
     color: white;
     position: absolute;
     left: 50%;
-    top: 50%;
-    transform: translate(-50%,-50%);
+    top: 10%;
+    transform: translate(-50%,50%);
     font-size: 80px;
     font-weight: 900;
     text-transform: uppercase;
     opacity: 0;
     letter-spacing: 50px;
     pointer-events: none;
-    transition: 0.5s;
-
-
+    transition: 1s;
 
 }
 
@@ -87,10 +86,25 @@
 }
 
 
-/* .products-ul li::before{
-    content: '';
+.products-ul li::before{
+    content: attr(data-price) attr(data-quantity);
+    color: white;
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    transform: translate(-50%,100%);
+    font-size: 40px;
+    font-weight: 600;
+    text-transform: uppercase;
+    opacity: 0;
+    letter-spacing: 15px;
+    pointer-events: none;
+    transition: 1s;
 
 
+}
 
-
-} */
+.products-ul li:hover::before{
+    opacity: 0.5; 
+    letter-spacing: 5px;
+}

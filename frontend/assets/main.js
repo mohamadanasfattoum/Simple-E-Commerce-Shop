@@ -36,7 +36,6 @@ fetch("http://127.0.0.1:8000/api/products/", {
     .then(response => {return response.json()})
     .then((data) => {
 
-      
         let tbodyGroup = document.getElementById("tb-group");
 
         let productsCounnt = document.getElementById("products-counnt");
@@ -46,20 +45,10 @@ fetch("http://127.0.0.1:8000/api/products/", {
         let brandsCounnt = document.getElementById("brands-count");
         brandsCounnt.innerHTML = brandsSet.size;
 
-        // produts
-        let sectionGroup  = document.getElementById("section-group");
-        sectionGroup.setAttribute('class','products-section')
-
-
-        let ulRow = document.createElement("ul"); // produts
-        ulRow.setAttribute('class','products-ul')
-        sectionGroup.appendChild(ulRow)        
-
 
         data.forEach((product) => {
 
             let row = document.createElement("tr");
-
 
             let productName = document.createElement("td");
             productName.setAttribute('class','product');
@@ -79,29 +68,60 @@ fetch("http://127.0.0.1:8000/api/products/", {
 
             tbodyGroup.appendChild(row);
 
-            // produts ###############
-            let productNameLi = document.createElement("li");
-            let productNameA = document.createElement("a");
-            productNameA.innerHTML = product.name; 
-            productNameA.href = "#";
-
-            productNameLi.appendChild(productNameA);
-            ulRow.appendChild(productNameLi);
-
-            sectionGroup.appendChild(ulRow);
-
-
-            // produts ###############
-            
-
-            
-
-
-
       });
     }).catch(error => console.log(error));
     
+////######################################## prudoct detail
 
+
+fetch("http://127.0.0.1:8000/api/products/", {
+  method: "GET",
+  headers: {
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${accessToken}`,
+  },
+  credentials : "include"
+})
+  .then(response => {return response.json()})
+  .then((data) => {
+
+      let sectionGroup  = document.getElementById("section-group");
+      sectionGroup.setAttribute('class','products-section')
+
+
+      let ulRow = document.createElement("ul"); 
+      ulRow.setAttribute('class','products-ul')
+      sectionGroup.appendChild(ulRow)        
+
+
+      data.forEach((product) => {
+
+        let productNameLi = document.createElement("li");
+        let productNameA = document.createElement("a");
+        productNameA.innerHTML = product.name; 
+        productNameA.href = "#";
+
+        productNameLi.setAttribute('data-price',`$${product.price}`);
+
+        productNameLi.setAttribute('data-quantity', `\n\nMenge:${product.quantity}\n`);
+        productNameLi.setAttribute('data-brand', product.brand);
+
+        productNameLi.appendChild(productNameA);
+        ulRow.appendChild(productNameLi);
+
+        sectionGroup.appendChild(ulRow);
+
+
+      });
+  }).catch(error => console.log(error));
+// produts ###############// produts ###############// produts ###############    
+
+function hideProductDetail() {
+  const detailDiv = document.getElementById('product-detail');
+  if (detailDiv) {
+      detailDiv.style.display = 'none';
+  }
+}
 
 
     fetch("http://127.0.0.1:8000/accountsapi/users/", {
