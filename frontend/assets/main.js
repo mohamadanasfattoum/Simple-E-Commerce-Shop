@@ -1,8 +1,8 @@
 
 let accessToken = localStorage.getItem('access');
 
-if(!accessToken || undefined){
-  window.location.herf = 'http://127.0.0.1:5500/frontend/login.html/'
+if(!accessToken){
+  window.location.herf = 'http://127.0.0.1:5500/frontend/login.html/';
 }
 
 
@@ -74,6 +74,8 @@ fetch("http://127.0.0.1:8000/api/products/", {
 ////######################################## prudoct detail
 
 
+
+
 fetch("http://127.0.0.1:8000/api/products/", {
   method: "GET",
   headers: {
@@ -95,13 +97,12 @@ fetch("http://127.0.0.1:8000/api/products/", {
 
 
       data.forEach((product) => {
-
-
-
         let productNameLi = document.createElement("li");
+
+
         let idField = product.id;
         productNameLi.setAttribute("onclick", `productDetail(${idField})`);
-
+        
         let productNameA = document.createElement("a");
         productNameA.innerHTML = product.name; 
         productNameA.href = "#";
@@ -119,6 +120,10 @@ fetch("http://127.0.0.1:8000/api/products/", {
       });
   }).catch(error => console.log(error));
 // produts ###############// produts ###############// produts ###############    
+
+
+
+
 
 function hideProductDetail() {
   const detailDiv = document.getElementById('product-detail');
@@ -155,36 +160,10 @@ function logOut(){
   window.location.href = 'http://127.0.0.1:5500/frontend/login.html';
 }
 
-
-function productDetail(productID){
-
-  document.addEventListener("DOMContentLoaded",() =>{
-    const productURLParam = new URLSearchParams(window.location.search);
-    const productID = productURLParam.get("id");
-
-    if(productID){
-      fetch(`http://127.0.0.1:8000/api/products/${productID}/`,{
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${accessToken}`,
-        },
-        credentials : "include"
-      })
-        .then(response => {return response.json()})
-        .then((data)=>{
-
-          alert(`Du bist ib product ${data.name}`);
-
-          let productName = document.getElementById('productName');
-          productName.innerHTML = data.name; 
-    
-        }).catch(error => console.log(error));
-    };
-
-  });
-
-  window.location.href = `http://127.0.0.1:5500/frontend/product_detail.html?id=${productID}`
-
+// ich hbe den function in product_detail.js erstellt und dann nochmal hier gerufen
+function productDetail (productID) {
+  window.location.href = `http://127.0.0.1:5500/frontend/product_detail.html?id=${productID}`;
 };
+
+
 

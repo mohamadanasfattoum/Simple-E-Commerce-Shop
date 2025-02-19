@@ -1,0 +1,35 @@
+*{
+    margin: 0;
+    padding: 0;
+
+}
+
+.product-body{
+    background: linear-gradient(#01012e, #240019);
+    height: 100vh;
+    font-family: sans-serif;
+}
+
+.product-section{
+    background: url(./images/stars1.png);
+    height: 100vh;
+    display: flex;
+    justify-content: center; /*  x */
+    align-items: center; /*  y */
+    width: 100%;
+
+}
+
+
+.product-detail-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap:30px;
+    width: 300px;
+    height: 400px;
+    border: white solid 2px;
+
+    border-radius: 10px;
+}
