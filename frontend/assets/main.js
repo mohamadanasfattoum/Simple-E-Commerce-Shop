@@ -10,7 +10,7 @@ if(!accessToken || undefined){
 
 document.getElementById('products-link').addEventListener('click', 
   function(event){
-    event.preventDefault(); // Verhindert den Standard-Link-Klick
+    event.preventDefault(); 
     window.location.href = 'http://127.0.0.1:5500/frontend/products.html';
 });
 
@@ -18,7 +18,7 @@ document.getElementById('products-link').addEventListener('click',
 
 document.getElementById('dashboard-link').addEventListener('click', 
   function(event){
-    event.preventDefault(); // Verhindert den Standard-Link-Klick
+    event.preventDefault(); 
     window.location.href = 'http://127.0.0.1:5500/frontend/dashboard.html';
 });
 
@@ -96,7 +96,12 @@ fetch("http://127.0.0.1:8000/api/products/", {
 
       data.forEach((product) => {
 
+
+
         let productNameLi = document.createElement("li");
+        let idField = product.id;
+        productNameLi.setAttribute("onclick", `productDetail(${idField})`);
+
         let productNameA = document.createElement("a");
         productNameA.innerHTML = product.name; 
         productNameA.href = "#";
@@ -110,7 +115,6 @@ fetch("http://127.0.0.1:8000/api/products/", {
         ulRow.appendChild(productNameLi);
 
         sectionGroup.appendChild(ulRow);
-
 
       });
   }).catch(error => console.log(error));
@@ -144,10 +148,6 @@ function hideProductDetail() {
 
       }).catch(error => console.log(error));
           
-        // const usersCount =  data.reduce((total, useraccount) => total + useraccount.users_count, 0)
-        // let usersCounnt = document.getElementById("users-counnt");
-        // usersCounnt.innerHTML = usersCount;
-
 
 
 function logOut(){
@@ -155,4 +155,36 @@ function logOut(){
   window.location.href = 'http://127.0.0.1:5500/frontend/login.html';
 }
 
+
+function productDetail(productID){
+
+  document.addEventListener("DOMContentLoaded",() =>{
+    const productURLParam = new URLSearchParams(window.location.search);
+    const productID = productURLParam.get("id");
+
+    if(productID){
+      fetch(`http://127.0.0.1:8000/api/products/${productID}/`,{
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+        credentials : "include"
+      })
+        .then(response => {return response.json()})
+        .then((data)=>{
+
+          alert(`Du bist ib product ${data.name}`);
+
+          let productName = document.getElementById('productName');
+          productName.innerHTML = data.name; 
+    
+        }).catch(error => console.log(error));
+    };
+
+  });
+
+  window.location.href = `http://127.0.0.1:5500/frontend/product_detail.html?id=${productID}`
+
+};
 
